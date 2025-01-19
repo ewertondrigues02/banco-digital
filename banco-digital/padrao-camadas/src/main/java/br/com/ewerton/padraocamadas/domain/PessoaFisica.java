@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Pessoa_Fisica")
+@Table(name = "tb_pessoa_fisica")
 public class PessoaFisica extends Pessoa{
 
     @NotNull(message = "CPF não pode ser nulo")
