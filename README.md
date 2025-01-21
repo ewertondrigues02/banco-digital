@@ -1,8 +1,4 @@
-#  Banco Digital: Implementação com Padrões de Projeto - Camadas, Factory Method, Singleton e MVC
 
----
-
-```markdown
 # Banco Digital - Comparação de Padrões de Projeto
 
 Este repositório contém uma aplicação de um banco digital desenvolvida com **Spring Boot 3.4.1** e **Java 21**, explorando diferentes **padrões de projeto**:  
@@ -195,10 +191,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 Para dúvidas ou sugestões, entre em contato pelo e-mail: **seuemail@dominio.com**.
 ```
-
-### O que foi adicionado?
-- **Configuração detalhada do `application.properties`** (com H2, Flyway, e-mail, segurança, etc.).
-- Detalhes sobre como configurar e usar diferentes perfis de banco de dados.
-- Esclarecimento sobre os endpoints, porta padrão e configuração extra.
-
-Se precisar de ajustes adicionais, é só avisar! 😊
+ 
