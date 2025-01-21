@@ -58,7 +58,7 @@ O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantend
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/banco-digital-padroes.git
+git clone https://github.com/ewertondrigues02/banco-digital-padroes.git
 cd banco-digital-padroes
 ```
 
@@ -187,8 +187,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
-## 📧 Contato
-
-Para dúvidas ou sugestões, entre em contato pelo e-mail: **seuemail@dominio.com**.
-```
  
