@@ -187,4 +187,7 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
+![Diagrama do Banco Digital - 3Core drawio](https://github.com/user-attachments/assets/2d3d2c94-2379-4d1c-9985-a9e024f3411e)
+
+
  
