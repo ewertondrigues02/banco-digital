@@ -2,10 +2,10 @@
 # Banco Digital - Comparação de Padrões de Projeto
 
 Este repositório contém uma aplicação de um banco digital desenvolvida com **Spring Boot 3.4.1** e **Java 21**, explorando diferentes **padrões de projeto**:  
-- ► Em Desenvolvimento **Padrão em Camadas**     
-- **Factory Method**     ► Na Fila de Desenvolvimento
-- **Singleton**     ► Na Fila de Desenvolvimento
-- **MVC**     ► Na Fila de Desenvolvimento
+- **Padrão em Camadas**   -   Em Desenvolvimento
+- **Factory Method**   -   Na Fila de Desenvolvimento
+- **Singleton**   -   Na Fila de Desenvolvimento
+- **MVC**   -   Na Fila de Desenvolvimento
 
 O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantendo uma base tecnológica robusta e moderna.
 
