@@ -152,8 +152,6 @@ src/
 │   │       ├── repositories/   # Repositórios (JPA)
 │   │       ├── models/         # Modelos de domínio
 │   │       ├── dto/            # Data Transfer Objects
-│   │       ├── factories/      # Implementações de Factory Method
-│   │       ├── patterns/       # Implementações dos padrões de projeto
 │   ├── resources/
 │       ├── application.properties
 │       ├── db/migration/       # Scripts do Flyway
