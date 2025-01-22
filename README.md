@@ -218,8 +218,9 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
+## Diagrama da UML
 
-[Padrão Camadas.pdf](https://github.com/user-attachments/files/18503102/Diagrama.do.Banco.Digital.-.3Core.drawio.pdf)     ![hierarquia](https://github.com/user-attachments/assets/9ccef058-ab49-46d8-be22-8938193da6a8)
+[Padrão Camadas.pdf](https://github.com/user-attachments/files/18503102/Diagrama.do.Banco.Digital.-.3Core.drawio.pdf)     ![hierarquia]
 
 
 
