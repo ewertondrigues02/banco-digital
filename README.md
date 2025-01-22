@@ -106,8 +106,9 @@ A aplicação estará disponível em:
 
 ---
 
-#### Arquivo Flyway
+## Arquivo Flyway
 
+#### **Tabela Pessoa Física**
 ```
 CREATE TABLE tb_pessoa_fisica (
    pessoa_fisica_id SERIAL PRIMARY KEY,
@@ -123,6 +124,8 @@ CREATE TABLE tb_pessoa_fisica (
 ```
 
 ---
+
+#### **Tabela Pessoa Lojista**
 ```
 CREATE TABLE tb_pessoa_lojista (
 pessoa_lojista_id SERIAL PRIMARY KEY,
