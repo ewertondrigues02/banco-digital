@@ -102,7 +102,7 @@ mvn spring-boot:run
 ```
 
 A aplicação estará disponível em:  
-[http://localhost:8090](http://localhost:8090)
+[http://localhost:8090](http://localhost:8090)  - Coloque a porta que desejar.
 
 ---
 
