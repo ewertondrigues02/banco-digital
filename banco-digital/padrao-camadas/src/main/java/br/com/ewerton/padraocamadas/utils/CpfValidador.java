@@ -39,9 +39,10 @@ public class CpfValidador {
 
         int secondDigit = sum % 11 < 2 ? 0 : 11 - sum % 11;
         return secondDigit == Integer.parseInt(String.valueOf(cpf.charAt(10)));
+
+
     }
 
-//    Para verificar o cpf usar o metodo abaixo
-//    boolean isValid = CpfValidator.isValid("12345678909");
-
+    //    Para verificar o cpf usar o metodo abaixo
+    boolean isValid = CpfValidador.isValid("12345678909");
 }

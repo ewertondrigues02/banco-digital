@@ -5,7 +5,7 @@ import br.com.ewerton.padraocamadas.exception.ValidationException;
 
 public interface GenericService<T, ID> {
 
-    T consultar(T id) throws EntityNotFoundException;
+    T consultar(ID id) throws EntityNotFoundException;
 
     T depositar(T entity) throws EntityNotFoundException, ValidationException;
 
