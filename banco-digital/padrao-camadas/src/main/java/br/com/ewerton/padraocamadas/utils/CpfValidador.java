@@ -5,21 +5,19 @@ import java.util.regex.Pattern;
 
 public class CpfValidador {
 
-    // Método para verificar se o CPF é válido
     public static boolean isValid(String cpf) {
-        // Verifica se o CPF é nulo ou tem um tamanho diferente de 11
+        cpf = cpf.replace(".", "").replace("-", "");
         if (cpf == null || cpf.length() != 11) {
             return false;
         }
 
-        // Verifica se o CPF tem apenas números
+
         Pattern pattern = Pattern.compile("[0-9]+");
         Matcher matcher = pattern.matcher(cpf);
         if (!matcher.matches()) {
             return false;
         }
 
-        // Valida os dois dígitos verificadores
         int sum = 0;
         int weight = 10;
         for (int i = 0; i < 9; i++) {
@@ -38,11 +36,17 @@ public class CpfValidador {
         }
 
         int secondDigit = sum % 11 < 2 ? 0 : 11 - sum % 11;
-        return secondDigit == Integer.parseInt(String.valueOf(cpf.charAt(10)));
+        if (secondDigit != Integer.parseInt(String.valueOf(cpf.charAt(10)))) {
+            return false;
+        }
 
+        try {
+            Long cpfAsLong = Long.parseLong(cpf);
+        } catch (NumberFormatException e) {
+            return false;
+        }
 
+        return true;
     }
 
-    //    Para verificar o cpf usar o metodo abaixo
-    boolean isValid = CpfValidador.isValid("12345678909");
 }

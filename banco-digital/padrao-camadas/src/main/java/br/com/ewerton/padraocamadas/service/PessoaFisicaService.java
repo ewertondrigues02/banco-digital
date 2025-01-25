@@ -9,8 +9,10 @@ import br.com.ewerton.padraocamadas.utils.CpfValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
-public class PessoaFisicaService implements GenericService<PessoaFisica, String>{
+public class PessoaFisicaService implements GenericService<PessoaFisica, String> {
 
     @Autowired
     private PessoaFisicaRepository pessoaFisicaRepository;
@@ -22,13 +24,25 @@ public class PessoaFisicaService implements GenericService<PessoaFisica, String>
 
     @Override
     public PessoaFisica consultar(String cpf) throws EntityNotFoundException {
-        if ( == null || cpf.isEmpty() || !CpfValidador.isValid(cpf)) {
-            throw new EntityNotFoundException("CPF nulo ou vazio, favor tente novamente");
-    } else if (!CpfValidador.isValid(cpf)) {
-            throw new EntityNotFoundException("Insira o CPF no formato: xxx.xxx.xxx-xx");
+        cpf = cpf.replace(".", "").replace("-", "");
+        if (cpf == null || cpf.isEmpty()) {
+            throw new EntityNotFoundException("CPF nulo ou vazio, favor tente novamente.");
         }
-            return pessoaFisicaRepository.
+        if (!CpfValidador.isValid(cpf)) {
+            throw new EntityNotFoundException("CPF inválido. Certifique-se de que o CPF é válido e no formato correto.");
         }
+        Long cpfLong;
+        try {
+            cpfLong = Long.parseLong(cpf);
+        } catch (NumberFormatException e) {
+            throw new EntityNotFoundException("Erro ao converter CPF para número. Verifique o formato.");
+        }
+        Optional<PessoaFisica> obj = pessoaFisicaRepository.findById(cpfLong);
+        if (obj.isEmpty()) {
+            throw new EntityNotFoundException("Nenhuma pessoa encontrada para o CPF fornecido.");
+        }
+        return obj.get();
+    }
 
     @Override
     public PessoaFisica depositar(PessoaFisica entity) throws EntityNotFoundException, ValidationException {
