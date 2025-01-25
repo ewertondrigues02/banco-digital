@@ -1,5 +1,5 @@
 
-# Banco Digital - Comparação de Padrões de Projeto
+# Banco Digital - Nos 4 Padrões de Projeto mais Utilizados
 
 Este repositório contém uma aplicação de um banco digital desenvolvida com **Spring Boot 3.4.1** e **Java 21**, explorando diferentes **padrões de projeto**:  
 - **Padrão em Camadas**   -   Em Desenvolvimento
