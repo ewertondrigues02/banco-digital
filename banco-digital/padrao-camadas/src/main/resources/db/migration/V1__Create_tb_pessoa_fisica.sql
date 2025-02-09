@@ -5,6 +5,6 @@ CREATE TABLE tb_pessoa_fisica (
                                   email VARCHAR(255) NOT NULL UNIQUE,
                                   saldo NUMERIC(15, 2),
                                   senha VARCHAR(20) NOT NULL,
-                                  CONSTRAINT chk_cpf_format CHECK (cpf ~ '^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$'),
+                                  CONSTRAINT chk_cpf_format CHECK (cpf LIKE '___.___.___-__'),
     CONSTRAINT chk_senha_length CHECK (LENGTH(senha) BETWEEN 8 AND 20)
 );

@@ -10,6 +10,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class PessoaFisicaService implements GenericService<PessoaFisicaDto, String> {
 
@@ -46,8 +48,17 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Stri
     }
 
     @Override
-    public PessoaFisicaDto depositar(PessoaFisicaDto entity) throws EntityNotFoundException, ValidationException {
-        return null;
+    public PessoaFisicaDto depositar(PessoaFisicaDto entity, Double valor) throws EntityNotFoundException, ValidationException {
+        if (!Objects.equals(entity.getPessoaFisicaCpfDto(), pessoaFisica.getPessoaFisicaCpf()) ||
+                !Objects.equals(entity.getPessoaFisicaEmailDto(), pessoaFisica.getPessoaEmail())) {
+            throw new EntityNotFoundException("Não foi possível fazer o depósito. Verifique os dados novamente.");
+        }
+        if (valor == null || valor <= 0) {
+            throw new ValidationException("Valor inválido, o valor precisa ser maior que 0: " + valor);
+        }
+        pessoaFisica.setPessoaSaldo(pessoaFisica.getPessoaSaldo() + valor);
+        pessoaFisicaRepository.save(pessoaFisica);
+        return entity.fromEntity(pessoaFisica);
     }
 
     @Override

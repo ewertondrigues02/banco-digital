@@ -7,7 +7,7 @@ public interface GenericService<T, ID> {
 
     T consultar(ID id) throws PessoaNotFoundException;
 
-    T depositar(T entity) throws PessoaNotFoundException, ValidationException;
+    T depositar(T entity, Double valor) throws PessoaNotFoundException, ValidationException;
 
     T enviar(T valor) throws PessoaNotFoundException;
 
