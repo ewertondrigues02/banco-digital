@@ -2,19 +2,21 @@ package br.com.ewerton.padraocamadas.dto;
 
 import br.com.ewerton.padraocamadas.domain.PessoaFisica;
 
+import java.math.BigDecimal;
+
 public class PessoaFisicaDto {
 
     private Long pessoaFisicaIdDto;
     private String pessoaFisicaNomeDto;
     private String pessoaFisicaEmailDto;
-    private Double pessoaFisicaSaldoDto;
+    private BigDecimal pessoaFisicaSaldoDto;
     private Integer pessoaFisicaSenhaDto;
     private String pessoaFisicaCpfDto;
 
     public PessoaFisicaDto() {
     }
 
-    public PessoaFisicaDto(Long pessoaFisicaIdDto, String pessoaFisicaNomeDto, String pessoaFisicaEmailDto, Double pessoaFisicaSaldoDto, Integer pessoaFisicaSenhaDto, String pessoaFisicaCpfDto) {
+    public PessoaFisicaDto(Long pessoaFisicaIdDto, String pessoaFisicaNomeDto, String pessoaFisicaEmailDto, BigDecimal pessoaFisicaSaldoDto, Integer pessoaFisicaSenhaDto, String pessoaFisicaCpfDto) {
         this.pessoaFisicaIdDto = pessoaFisicaIdDto;
         this.pessoaFisicaNomeDto = pessoaFisicaNomeDto;
         this.pessoaFisicaEmailDto = pessoaFisicaEmailDto;
@@ -48,11 +50,11 @@ public class PessoaFisicaDto {
         this.pessoaFisicaEmailDto = pessoaFisicaEmailDto;
     }
 
-    public Double getPessoaFisicaSaldoDto() {
+    public BigDecimal getPessoaFisicaSaldoDto() {
         return pessoaFisicaSaldoDto;
     }
 
-    public void setPessoaFisicaSaldoDto(Double pessoaFisicaSaldoDto) {
+    public void setPessoaFisicaSaldoDto(BigDecimal pessoaFisicaSaldoDto) {
         this.pessoaFisicaSaldoDto = pessoaFisicaSaldoDto;
     }
 

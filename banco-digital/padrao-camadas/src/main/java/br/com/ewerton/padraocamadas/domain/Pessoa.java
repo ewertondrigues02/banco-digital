@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -21,7 +22,7 @@ public abstract class Pessoa {
     private String pessoaEmail;
 
     @Column(name = "Saldo")
-    private Double pessoaSaldo;
+    private BigDecimal pessoaSaldo;
 
     @Column(name = "Senha")
     @NotNull(message = "Senha não pode ser nula")
@@ -31,7 +32,7 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String pessoaNome, String pessoaEmail, Double pessoaSaldo, Integer pessoaSenha) {
+    public Pessoa(String pessoaNome, String pessoaEmail, BigDecimal pessoaSaldo, Integer pessoaSenha) {
         this.pessoaNome = pessoaNome;
         this.pessoaEmail = pessoaEmail;
         this.pessoaSaldo = pessoaSaldo;
@@ -54,11 +55,11 @@ public abstract class Pessoa {
         this.pessoaEmail = pessoaEmail;
     }
 
-    public Double getPessoaSaldo() {
+    public BigDecimal getPessoaSaldo() {
         return pessoaSaldo;
     }
 
-    public void setPessoaSaldo(Double pessoaSaldo) {
+    public void setPessoaSaldo(BigDecimal pessoaSaldo) {
         this.pessoaSaldo = pessoaSaldo;
     }
 

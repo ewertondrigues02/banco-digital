@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -20,7 +21,7 @@ public class PessoaLojista extends Pessoa{
     @Pattern(regexp = "^[0-9]{2}\\.([0-9]{3}){2}\\/([0-9]{4}){2}\\-[0-9]{2}$", message = "CNPJ deve estar no formato XX.XXX.XXX/XXXX-XX")
     private String pessoaLojistaCnpj;
 
-    public PessoaLojista(Long pessoaLojistaID ,String pessoaNome, String pessoaEmail, Double pessoaSaldo ,Integer pessoaSenha, String pessoaLojistaCnpj) {
+    public PessoaLojista(Long pessoaLojistaID , String pessoaNome, String pessoaEmail, BigDecimal pessoaSaldo , Integer pessoaSenha, String pessoaLojistaCnpj) {
         super( pessoaNome, pessoaEmail, pessoaSaldo, pessoaSenha);
         this.pessoaLojistaCnpj = pessoaLojistaCnpj;
         this.pessoaLojistaID = pessoaLojistaID;

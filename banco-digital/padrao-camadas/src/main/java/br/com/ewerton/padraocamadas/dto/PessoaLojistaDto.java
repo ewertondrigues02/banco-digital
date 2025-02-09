@@ -2,16 +2,18 @@ package br.com.ewerton.padraocamadas.dto;
 
 import br.com.ewerton.padraocamadas.domain.PessoaLojista;
 
+import java.math.BigDecimal;
+
 public class PessoaLojistaDto {
 
     private Long pessoaLojistaIdDto;
     private String pessoaLojistaNomeDto;
     private String pessoaLojistaEmailDto;
-    private Double pessoaLojistaSaldoDto;
+    private BigDecimal pessoaLojistaSaldoDto;
     private Integer pessoaLojistaSenhaDto;
     private String pessoaLojistaCnpjDto;
 
-    public PessoaLojistaDto(Long pessoaLojistaIdDto, String pessoaLojistaNomeDto, String pessoaLojistaEmailDto, Double pessoaLojistaSaldoDto, Integer pessoaLojistaSenhaDto, String pessoaLojistaCnpjDto) {
+    public PessoaLojistaDto(Long pessoaLojistaIdDto, String pessoaLojistaNomeDto, String pessoaLojistaEmailDto, BigDecimal pessoaLojistaSaldoDto, Integer pessoaLojistaSenhaDto, String pessoaLojistaCnpjDto) {
         this.pessoaLojistaIdDto = pessoaLojistaIdDto;
         this.pessoaLojistaNomeDto = pessoaLojistaNomeDto;
         this.pessoaLojistaEmailDto = pessoaLojistaEmailDto;
@@ -44,11 +46,11 @@ public class PessoaLojistaDto {
         this.pessoaLojistaEmailDto = pessoaLojistaEmailDto;
     }
 
-    public Double getPessoaLojistaSaldoDto() {
+    public BigDecimal getPessoaLojistaSaldoDto() {
         return pessoaLojistaSaldoDto;
     }
 
-    public void setPessoaLojistaSaldoDto(Double pessoaLojistaSaldoDto) {
+    public void setPessoaLojistaSaldoDto(BigDecimal pessoaLojistaSaldoDto) {
         this.pessoaLojistaSaldoDto = pessoaLojistaSaldoDto;
     }
 

@@ -10,6 +10,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Objects;
 
 @Service
@@ -48,21 +50,48 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Stri
     }
 
     @Override
-    public PessoaFisicaDto depositar(PessoaFisicaDto entity, Double valor) throws EntityNotFoundException, ValidationException {
+    public PessoaFisicaDto depositar(PessoaFisicaDto entity, BigDecimal valor) throws EntityNotFoundException, ValidationException {
         if (!Objects.equals(entity.getPessoaFisicaCpfDto(), pessoaFisica.getPessoaFisicaCpf()) ||
-                !Objects.equals(entity.getPessoaFisicaEmailDto(), pessoaFisica.getPessoaEmail())) {
+                !Objects.equals(entity.getPessoaFisicaEmailDto(), pessoaFisica.getPessoaEmail()) || CpfValidador.isValid(entity.getPessoaFisicaCpfDto())) {
             throw new EntityNotFoundException("Não foi possível fazer o depósito. Verifique os dados novamente.");
         }
-        if (valor == null || valor <= 0) {
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw new ValidationException("Valor inválido, o valor precisa ser maior que 0: " + valor);
         }
-        pessoaFisica.setPessoaSaldo(pessoaFisica.getPessoaSaldo() + valor);
+        pessoaFisica.setPessoaSaldo(pessoaFisica.getPessoaSaldo().add(valor));
         pessoaFisicaRepository.save(pessoaFisica);
         return entity.fromEntity(pessoaFisica);
     }
 
     @Override
-    public PessoaFisicaDto enviar(PessoaFisicaDto valor) throws EntityNotFoundException {
-        return null;
+    public PessoaFisicaDto enviar(PessoaFisicaDto entityRemetente, PessoaFisicaDto entityDestino, BigDecimal valor, Instant horaTransferencia) throws EntityNotFoundException, ValidationException {
+
+        if (entityRemetente == null || entityDestino == null) {
+            throw new EntityNotFoundException("Remetente ou destinatário inválidos.");
+        }
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new ValidationException("O valor da transferência deve ser maior que zero.");
+        }
+        if (!CpfValidador.isValid(entityRemetente.getPessoaFisicaCpfDto()) ||
+                !CpfValidador.isValid(entityDestino.getPessoaFisicaCpfDto())) {
+            throw new ValidationException("CPF do remetente ou destinatário inválido.");
+        }
+        if (entityRemetente.getPessoaFisicaSaldoDto().compareTo(valor) < 0) {
+            throw new ValidationException("Saldo insuficiente para a transferência.");
+        }
+
+        PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findByCpf(entityRemetente.getPessoaFisicaCpfDto())
+                .orElseThrow(() -> new EntityNotFoundException("Remetente não encontrado."));
+        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findByCpf(entityDestino.getPessoaFisicaCpfDto())
+                .orElseThrow(() -> new EntityNotFoundException("Destinatário não encontrado."));
+
+        pessoaFisicaRemetente.setPessoaSaldo(pessoaFisicaRemetente.getPessoaSaldo().subtract(valor));
+        pessoaFisicaDestino.setPessoaSaldo(pessoaFisicaDestino.getPessoaSaldo().add(valor));
+
+        pessoaFisicaRepository.save(pessoaFisicaRemetente);
+        pessoaFisicaRepository.save(pessoaFisicaDestino);
+
+        return PessoaFisicaDto.fromEntity(pessoaFisicaRemetente);
     }
+
 }
