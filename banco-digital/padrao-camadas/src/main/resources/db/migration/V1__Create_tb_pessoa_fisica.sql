@@ -8,3 +8,4 @@ CREATE TABLE tb_pessoa_fisica (
                                   CONSTRAINT chk_cpf_format CHECK (cpf LIKE '___.___.___-__'),
     CONSTRAINT chk_senha_length CHECK (LENGTH(senha) BETWEEN 8 AND 20)
 );
+

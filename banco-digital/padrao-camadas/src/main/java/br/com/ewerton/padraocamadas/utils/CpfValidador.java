@@ -6,11 +6,12 @@ import java.util.regex.Pattern;
 public class CpfValidador {
 
     public static boolean isValid(String cpf) {
+
         cpf = cpf.replace(".", "").replace("-", "");
+
         if (cpf == null || cpf.length() != 11) {
             return false;
         }
-
 
         Pattern pattern = Pattern.compile("[0-9]+");
         Matcher matcher = pattern.matcher(cpf);
@@ -40,13 +41,6 @@ public class CpfValidador {
             return false;
         }
 
-        try {
-            Long cpfAsLong = Long.parseLong(cpf);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
         return true;
     }
-
 }
