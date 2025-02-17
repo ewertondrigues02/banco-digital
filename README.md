@@ -26,7 +26,10 @@ O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantend
 - **Spring Validation**  
 - **Spring Web**  
 - **JUnit** e **Mockito**
-
+- **JWT**
+- AWS(**RDS** e **S3**)
+- **Swagger**
+  
 ---
 
 ## 📦 Pré-requisitos
