@@ -29,6 +29,7 @@ O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantend
 - **JWT**
 - AWS(**RDS** e **S3**)
 - **Swagger**
+- **Prometheus** e **Grafana**
   
 ---
 
