@@ -12,25 +12,43 @@ O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantend
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠 Tecnologias Utilizadas  
 
-- **Java**: 21  
-- **Spring Boot**: 3.4.1  
-- **Spring Data JPA**  
-- **Docker**  
-- **PostgreSQL** e **H2 Database**  
-- **Spring Security**  
-- **Flyway**  
-- **Spring Boot Actuator**  
-- **Spring Boot Mail**  
-- **Spring Validation**  
-- **Spring Web**  
-- **JUnit** e **Mockito**
-- **JWT**
-- AWS(**RDS** e **S3**)
-- **Swagger**
-- **Prometheus** e **Grafana**
-  
+### 🔹 Backend  
+
+- **Java 21** – Linguagem principal do projeto, utilizada para desenvolver a aplicação com alto desempenho e segurança.  
+- **Spring Boot 3.4.1** – Framework para facilitar a configuração e desenvolvimento de aplicações Java baseadas em Spring.  
+- **Spring Data JPA** – Abstração para facilitar a persistência de dados utilizando o Hibernate e o banco de dados relacional.  
+- **Spring Web** – Permite a criação de APIs REST e configuração de controllers HTTP na aplicação.  
+- **Spring Security** – Módulo para gerenciamento de autenticação e autorização, garantindo a segurança da aplicação.  
+- **JWT (JSON Web Token)** – Utilizado para autenticação segura e controle de acesso à API.  
+- **Spring Boot Mail** – Módulo para envio de e-mails transacionais dentro da aplicação.  
+- **Spring Validation** – Utilizado para validar os dados de entrada da aplicação de forma eficiente.  
+
+### 🔹 Banco de Dados  
+
+- **PostgreSQL** – Banco de dados relacional utilizado para armazenar os dados da aplicação.  
+- **Amazon RDS** – Serviço de banco de dados gerenciado na nuvem para escalabilidade e alta disponibilidade.  
+- **H2 Database** – Banco de dados em memória utilizado para testes e desenvolvimento.  
+- **Flyway** – Ferramenta de versionamento e migração do banco de dados, garantindo controle sobre as alterações estruturais.  
+
+### 🔹 Testes  
+
+- **JUnit e Mockito** – Ferramentas para criação e execução de testes unitários e mock de dependências.  
+- **Bacon H2** – Biblioteca auxiliar para simplificação e otimização de testes com banco de dados H2.  
+
+### 🔹 Documentação e Monitoramento  
+
+- **Swagger** – Ferramenta para documentação interativa de APIs, permitindo testes e visualização dos endpoints.  
+- **Spring Boot Actuator** – Fornece métricas, monitoramento e endpoints para gerenciar a aplicação em tempo real.  
+- **Prometheus** – Sistema de monitoramento e coleta de métricas para análise do desempenho da aplicação.  
+- **Grafana** – Plataforma para visualização de métricas e dashboards baseados em dados coletados pelo Prometheus.  
+
+### 🔹 Infraestrutura  
+
+- **Docker** – Plataforma de conteinerização que permite empacotar e executar a aplicação de forma isolada.  
+
+
 ---
 
 ## 📦 Pré-requisitos
