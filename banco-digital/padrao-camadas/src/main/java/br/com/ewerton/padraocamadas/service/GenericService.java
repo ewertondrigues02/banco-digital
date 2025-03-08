@@ -1,6 +1,5 @@
 package br.com.ewerton.padraocamadas.service;
 
-import br.com.ewerton.padraocamadas.domain.Pessoa;
 import br.com.ewerton.padraocamadas.dto.PessoaFisicaDto;
 import br.com.ewerton.padraocamadas.dto.PessoaLojistaDto;
 import br.com.ewerton.padraocamadas.exception.PessoaNotFoundException;
