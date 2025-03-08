@@ -17,7 +17,7 @@ public class PessoaLojista extends Pessoa{
     private Long pessoaLojistaID;
 
     @NotNull(message = "CNPJ não pode ser nulo")
-    @Column(unique = true, nullable = false, name = "CNPJ")
+    @Column(unique = true, nullable = false, name = "pessoa_lojista_cnpj")
     @Pattern(regexp = "^[0-9]{2}\\.([0-9]{3}){2}\\/([0-9]{4}){2}\\-[0-9]{2}$", message = "CNPJ deve estar no formato XX.XXX.XXX/XXXX-XX")
     private String pessoaLojistaCnpj;
 

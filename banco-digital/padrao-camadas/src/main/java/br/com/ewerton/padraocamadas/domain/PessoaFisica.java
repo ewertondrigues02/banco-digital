@@ -16,7 +16,7 @@ public class PessoaFisica extends Pessoa {
     private Long pessoaFisicaID;
 
     @NotNull(message = "CPF não pode ser nulo")
-    @Column(unique = true, nullable = false, name = "cpf")
+    @Column(unique = true, nullable = false, name = "pessoa_fisica_cpf")
     @Pattern(regexp = "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$", message = "CPF deve estar no formato XXX.XXX.XXX-XX")
     private String pessoaFisicaCpf;
 

@@ -45,7 +45,7 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
         // Removendo pontos e traços do CPF
         cpf = formatarCpf(cpf);
 
-        PessoaFisica pessoaFisica = pessoaFisicaRepository.findByCpf(cpf)
+        PessoaFisica pessoaFisica = pessoaFisicaRepository.findBypessoaFisicaCpf(cpf)
                 .orElseThrow(() -> new PessoaNotFoundException("Nenhuma pessoa encontrada para o CPF fornecido."));
 
         return PessoaFisicaDto.fromEntity(pessoaFisica);
@@ -156,9 +156,9 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     }
 
     private PessoaFisicaDto transferirParaPessoaFisica(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, BigDecimal valor) throws EntityNotFoundException {
-        PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findByCpf(remetenteFisica.getPessoaFisicaCpfDto())
+        PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findBypessoaFisicaCpf(remetenteFisica.getPessoaFisicaCpfDto())
                 .orElseThrow(() -> new EntityNotFoundException("Remetente não encontrado."));
-        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findByCpf(destinoFisica.getPessoaFisicaCpfDto())
+        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findBypessoaFisicaCpf(destinoFisica.getPessoaFisicaCpfDto())
                 .orElseThrow(() -> new EntityNotFoundException("Destinatário não encontrado."));
 
         pessoaFisicaRemetente.setPessoaSaldo(pessoaFisicaRemetente.getPessoaSaldo().subtract(valor));
@@ -175,7 +175,7 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
             throw new ValidationException("O Lojista (destinatário) não pode ser o remetente.");
         }
 
-        PessoaLojista pessoaLojistaDestino = pessoaLojistaRepository.findByCnpj(destinoLojista.getPessoaLojistaCnpjDto())
+        PessoaLojista pessoaLojistaDestino = pessoaLojistaRepository.findByPessoaLojistaCnpj(destinoLojista.getPessoaLojistaCnpjDto())
                 .orElseThrow(() -> new EntityNotFoundException("Destinatário Lojista não encontrado."));
 
         pessoaLojistaDestino.setPessoaSaldo(pessoaLojistaDestino.getPessoaSaldo().add(valor));
