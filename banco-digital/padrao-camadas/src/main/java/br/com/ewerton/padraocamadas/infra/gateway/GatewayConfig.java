@@ -11,7 +11,7 @@ public class GatewayConfig {
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes().route("example_route", r -> r.path("/pessoas_fisicas/**")
-                        .uri("http://localhost:8081"))
+                        .uri("http://localhost:8081/pessoas_fisicas"))
                 .build();
 
     }

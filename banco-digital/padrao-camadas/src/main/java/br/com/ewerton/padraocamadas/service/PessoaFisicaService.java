@@ -42,10 +42,7 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     public PessoaFisicaDto consultar(String cpf) throws PessoaNotFoundException {
         validarCpf(cpf);
 
-        // Removendo pontos e traços do CPF
-        cpf = formatarCpf(cpf);
-
-        PessoaFisica pessoaFisica = pessoaFisicaRepository.findBypessoaFisicaCpf(cpf)
+        PessoaFisica pessoaFisica = pessoaFisicaRepository.findByPessoaFisicaCpf(cpf)
                 .orElseThrow(() -> new PessoaNotFoundException("Nenhuma pessoa encontrada para o CPF fornecido."));
 
         return PessoaFisicaDto.fromEntity(pessoaFisica);
@@ -60,11 +57,6 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
         if (!CpfValidador.isValid(cpf)) {
             throw new PessoaNotFoundException("CPF inválido. Certifique-se de que o CPF é válido e no formato correto.");
         }
-    }
-
-    // Método para formatar o CPF removendo pontos e traços
-    private String formatarCpf(String cpf) {
-        return cpf.replace(".", "").replace("-", "");
     }
 
     @Override
@@ -156,9 +148,9 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     }
 
     private PessoaFisicaDto transferirParaPessoaFisica(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, BigDecimal valor) throws EntityNotFoundException {
-        PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findBypessoaFisicaCpf(remetenteFisica.getPessoaFisicaCpfDto())
+        PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findByPessoaFisicaCpf(remetenteFisica.getPessoaFisicaCpfDto())
                 .orElseThrow(() -> new EntityNotFoundException("Remetente não encontrado."));
-        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findBypessoaFisicaCpf(destinoFisica.getPessoaFisicaCpfDto())
+        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findByPessoaFisicaCpf(destinoFisica.getPessoaFisicaCpfDto())
                 .orElseThrow(() -> new EntityNotFoundException("Destinatário não encontrado."));
 
         pessoaFisicaRemetente.setPessoaSaldo(pessoaFisicaRemetente.getPessoaSaldo().subtract(valor));
