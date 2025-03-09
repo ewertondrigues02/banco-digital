@@ -17,5 +17,7 @@ public interface GenericService<T, ID> {
 
 //    <T extends Pessoa> T enviar(T entityRemetenteFisica, T entityDestinoFisica, T entityDestinoLojista, BigDecimal valor, Instant horaTransferencia) throws PessoaNotFoundException, ValidationException;
 
-    PessoaFisicaDto enviar(PessoaFisicaDto entityRemetenteFisica, PessoaFisicaDto entityDestinoFisica, PessoaLojistaDto entityDestinoLojista, BigDecimal valor, Instant horaTransferencia) throws EntityNotFoundException, ValidationException;
+    PessoaFisicaDto enviarParaPessoaFisica(PessoaFisicaDto entityRemetenteFisica, PessoaFisicaDto entityDestinoFisica, BigDecimal valor) throws EntityNotFoundException, ValidationException;
+
+    PessoaFisicaDto enviarParaLojista(PessoaFisicaDto entityRemetenteFisica, PessoaLojistaDto entityDestinoLojista, BigDecimal valor) throws EntityNotFoundException, ValidationException;
 }

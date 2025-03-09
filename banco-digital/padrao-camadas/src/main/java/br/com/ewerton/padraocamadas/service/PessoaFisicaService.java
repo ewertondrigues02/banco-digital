@@ -65,12 +65,20 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
         validarDadosPessoa(entity);
         validarValor(valor);
 
-        // Atualizando o saldo do destinatário
+        // Buscando a pessoa física correspondente ao DTO (entity)
+        PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findByPessoaFisicaCpf(entity.getPessoaFisicaCpfDto())
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa física não encontrada para o CPF fornecido."));
+
+        // Atualizando o saldo da pessoa física
         pessoaFisicaDestino.setPessoaSaldo(pessoaFisicaDestino.getPessoaSaldo().add(valor));
+
+        // Salvando as alterações no banco de dados
         pessoaFisicaRepository.save(pessoaFisicaDestino);
 
-        return entity.fromEntity(pessoaFisicaDestino);
+        // Convertendo a entidade atualizada para o DTO e retornando
+        return PessoaFisicaDto.fromEntity(pessoaFisicaDestino);
     }
+
 
     // Método de validação para dados do remetente
     private void validarDadosPessoa(PessoaFisicaDto entity) throws EntityNotFoundException {
@@ -94,60 +102,53 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     }
 
     @Override
-    public PessoaFisicaDto enviar(PessoaFisicaDto entityRemetenteFisica, PessoaFisicaDto entityDestinoFisica, PessoaLojistaDto entityDestinoLojista, BigDecimal valor, Instant horaTransferencia) throws EntityNotFoundException, ValidationException {
+    public PessoaFisicaDto enviarParaPessoaFisica(PessoaFisicaDto entityRemetenteFisica, PessoaFisicaDto entityDestinoFisica, BigDecimal valor)
+            throws EntityNotFoundException, ValidationException {
 
-        validarEntradas(entityRemetenteFisica, entityDestinoFisica, entityDestinoLojista, valor);
-
-        if (entityDestinoFisica != null) {
-            return transferirParaPessoaFisica(entityRemetenteFisica, entityDestinoFisica, valor);
-        }
-
-        if (entityDestinoLojista != null) {
-            return transferirParaLojista(entityRemetenteFisica, entityDestinoLojista, valor);
-        }
-
-        throw new ValidationException("Tipo de destinatário inválido.");
+        validarEntradasPessoaFisica(entityRemetenteFisica, entityDestinoFisica, valor);
+        return transferirParaPessoaFisica(entityRemetenteFisica, entityDestinoFisica, valor);
     }
 
-    private void validarEntradas(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, PessoaLojistaDto destinoLojista, BigDecimal valor) throws ValidationException {
-        validarRemetenteEDestinatario(remetenteFisica, destinoFisica, destinoLojista);
+    @Override
+    public PessoaFisicaDto enviarParaLojista(PessoaFisicaDto entityRemetenteFisica, PessoaLojistaDto entityDestinoLojista, BigDecimal valor)
+            throws EntityNotFoundException, ValidationException {
+
+        validarEntradasLojista(entityRemetenteFisica, entityDestinoLojista, valor);
+        return transferirParaLojista(entityRemetenteFisica, entityDestinoLojista, valor);
+    }
+
+    // Validações específicas para transferências entre pessoas físicas
+    private void validarEntradasPessoaFisica(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, BigDecimal valor)
+            throws ValidationException {
+
+        if (remetenteFisica == null || destinoFisica == null) {
+            throw new EntityNotFoundException("Remetente ou destinatário inválidos.");
+        }
+
         validarValor(valor);
         validarCpfRemetente(remetenteFisica);
-        validarCpfOuCnpjDestinatario(destinoFisica, destinoLojista);
+        validarCpfDestinatario(destinoFisica);
         validarSaldo(remetenteFisica, valor);
     }
 
-    private void validarRemetenteEDestinatario(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, PessoaLojistaDto destinoLojista) throws EntityNotFoundException {
-        if (remetenteFisica == null || (destinoFisica == null && destinoLojista == null)) {
+    // Validações específicas para transferências para lojistas
+    private void validarEntradasLojista(PessoaFisicaDto remetenteFisica, PessoaLojistaDto destinoLojista, BigDecimal valor)
+            throws ValidationException {
+
+        if (remetenteFisica == null || destinoLojista == null) {
             throw new EntityNotFoundException("Remetente ou destinatário inválidos.");
         }
+
+        validarValor(valor);
+        validarCpfRemetente(remetenteFisica);
+        validarCnpjDestinatario(destinoLojista);
+        validarSaldo(remetenteFisica, valor);
     }
 
-    private void validarSaldo(PessoaFisicaDto remetenteFisica, BigDecimal valor) throws ValidationException {
-        if (remetenteFisica.getPessoaFisicaSaldoDto().compareTo(valor) < 0) {
-            throw new ValidationException("Saldo insuficiente para a transferência.");
-        }
-    }
+    // Transferência entre pessoas físicas
+    private PessoaFisicaDto transferirParaPessoaFisica(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, BigDecimal valor)
+            throws EntityNotFoundException {
 
-    // Validar CPF do remetente
-    private void validarCpfRemetente(PessoaFisicaDto remetenteFisica) throws ValidationException {
-        if (!CpfValidador.isValid(remetenteFisica.getPessoaFisicaCpfDto())) {
-            throw new ValidationException("CPF do remetente inválido.");
-        }
-    }
-
-    // Validar CPF ou CNPJ do destinatário
-    private void validarCpfOuCnpjDestinatario(PessoaFisicaDto destinoFisica, PessoaLojistaDto destinoLojista) throws ValidationException {
-        if (destinoFisica != null && !CpfValidador.isValid(destinoFisica.getPessoaFisicaCpfDto())) {
-            throw new ValidationException("CPF do destinatário inválido.");
-        }
-
-        if (destinoLojista != null && !CnpjValidador.isValid(destinoLojista.getPessoaLojistaCnpjDto())) {
-            throw new ValidationException("CNPJ do destinatário (Lojista) inválido.");
-        }
-    }
-
-    private PessoaFisicaDto transferirParaPessoaFisica(PessoaFisicaDto remetenteFisica, PessoaFisicaDto destinoFisica, BigDecimal valor) throws EntityNotFoundException {
         PessoaFisica pessoaFisicaRemetente = pessoaFisicaRepository.findByPessoaFisicaCpf(remetenteFisica.getPessoaFisicaCpfDto())
                 .orElseThrow(() -> new EntityNotFoundException("Remetente não encontrado."));
         PessoaFisica pessoaFisicaDestino = pessoaFisicaRepository.findByPessoaFisicaCpf(destinoFisica.getPessoaFisicaCpfDto())
@@ -162,10 +163,9 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
         return PessoaFisicaDto.fromEntity(pessoaFisicaRemetente);
     }
 
-    private PessoaFisicaDto transferirParaLojista(PessoaFisicaDto remetenteFisica, PessoaLojistaDto destinoLojista, BigDecimal valor) throws ValidationException, EntityNotFoundException {
-        if (remetenteFisica.getPessoaFisicaCpfDto() != null) {
-            throw new ValidationException("O Lojista (destinatário) não pode ser o remetente.");
-        }
+    // Transferência para lojista
+    private PessoaFisicaDto transferirParaLojista(PessoaFisicaDto remetenteFisica, PessoaLojistaDto destinoLojista, BigDecimal valor)
+            throws ValidationException, EntityNotFoundException {
 
         PessoaLojista pessoaLojistaDestino = pessoaLojistaRepository.findByPessoaLojistaCnpj(destinoLojista.getPessoaLojistaCnpjDto())
                 .orElseThrow(() -> new EntityNotFoundException("Destinatário Lojista não encontrado."));
@@ -175,6 +175,37 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
         pessoaLojistaRepository.save(pessoaLojistaDestino);
 
         return PessoaFisicaDto.fromEntity(remetenteFisica.toEntity());
+    }
+
+    // Validações auxiliares
+    private void validarSaldo(PessoaFisicaDto remetenteFisica, BigDecimal valor) throws ValidationException {
+        if (remetenteFisica.getPessoaFisicaSaldoDto().compareTo(valor) < 0) {
+            throw new ValidationException("Saldo insuficiente para a transferência.");
+        }
+    }
+
+    private void validarValorTransferencia(BigDecimal valor) throws ValidationException {
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new ValidationException("Valor da transferência deve ser maior que zero.");
+        }
+    }
+
+    private void validarCpfRemetente(PessoaFisicaDto remetenteFisica) throws ValidationException {
+        if (!CpfValidador.isValid(remetenteFisica.getPessoaFisicaCpfDto())) {
+            throw new ValidationException("CPF do remetente inválido.");
+        }
+    }
+
+    private void validarCpfDestinatario(PessoaFisicaDto destinoFisica) throws ValidationException {
+        if (!CpfValidador.isValid(destinoFisica.getPessoaFisicaCpfDto())) {
+            throw new ValidationException("CPF do destinatário inválido.");
+        }
+    }
+
+    private void validarCnpjDestinatario(PessoaLojistaDto destinoLojista) throws ValidationException {
+        if (!CnpjValidador.isValid(destinoLojista.getPessoaLojistaCnpjDto())) {
+            throw new ValidationException("CNPJ do destinatário inválido.");
+        }
     }
 
 
