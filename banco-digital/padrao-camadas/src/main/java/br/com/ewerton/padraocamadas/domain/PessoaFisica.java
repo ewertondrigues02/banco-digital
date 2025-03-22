@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_pessoa_fisica")
-public class PessoaFisica extends Pessoa {
+public class PessoaFisica extends Pessoa implements Serializable {
+
+    private static final long servialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +47,27 @@ public class PessoaFisica extends Pessoa {
 
     public void setPessoaFisicaCpf(String pessoaFisicaCpf) {
         this.pessoaFisicaCpf = pessoaFisicaCpf;
+    }
+
+    @Override
+    public String toString() {
+        return "PessoaFisica{" +
+                "pessoaFisicaID=" + pessoaFisicaID +
+                ", pessoaFisicaCpf='" + pessoaFisicaCpf + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PessoaFisica that = (PessoaFisica) o;
+        return Objects.equals(getPessoaFisicaID(), that.getPessoaFisicaID()) && Objects.equals(getPessoaFisicaCpf(), that.getPessoaFisicaCpf());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPessoaFisicaID(), getPessoaFisicaCpf());
     }
 }

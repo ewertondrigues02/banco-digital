@@ -1,15 +1,19 @@
 package br.com.ewerton.padraocamadas.domain;
 
+import aj.org.objectweb.asm.commons.SerialVersionUIDAdder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_pessoa_lojista")
-public class PessoaLojista extends Pessoa{
+public class PessoaLojista extends Pessoa implements Serializable {
+
+    private static final long servialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

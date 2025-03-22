@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface PessoaLojistaRepository extends JpaRepository<PessoaLojista, Long> {
 
     Optional<PessoaLojista> findByPessoaLojistaCnpj(String pessoaLojistaCnpj);
+
 }
