@@ -36,7 +36,9 @@ O objetivo é demonstrar as diferenças e benefícios de cada abordagem, mantend
 ### 🔹 Testes  
 
 - **JUnit e Mockito** – Ferramentas para criação e execução de testes unitários e mock de dependências.  
-- **Bacon H2** – Biblioteca auxiliar para simplificação e otimização de testes com banco de dados H2.  
+- **Bacon H2** – Biblioteca auxiliar para simplificação e otimização de testes com banco de dados H2.
+- **Apache JMeter** - Ferramenta para testes de carga e desempenho de aplicações.
+- **OWASP ZAP** – Ferramenta de segurança para testes de vulnerabilidades em aplicações web.  
 
 ### 🔹 Documentação e Monitoramento  
 
