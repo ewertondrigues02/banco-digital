@@ -4,16 +4,19 @@ Este é um projeto Java baseado no **Spring Boot** que segue o padrão de camada
 
 ## 📌 Tecnologias Utilizadas
 
-- **[Java 21](https://docs.oracle.com/en/java/javase/21/)**
-- **[Spring Boot 3.4.1](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/)**
-- **[Spring Cloud 2024.0.0](https://docs.spring.io/spring-cloud/docs/2024.0.0/reference/html/)**
-- **[Spring Data JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)**
-- **[Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)**
-- **[Flyway para migração de banco de dados](https://documentation.red-gate.com/fd)**
-- **[PostgreSQL](https://www.postgresql.org/docs/current/)** e **[H2 Database](https://www.h2database.com/html/main.html)**
-- **[Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)**
-- **[Log4j](https://logging.apache.org/log4j/2.x/manual/)** e **[SLF4J](http://www.slf4j.org/manual.html) para logging**
-- **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** e **[Mockito](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html) para testes**
+<p>
+- <strong><a href="https://docs.oracle.com/en/java/javase/21/" style="text-decoration: none;">Java 21</a></strong><br>
+- <strong><a href="https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/" style="text-decoration: none;">Spring Boot 3.4.1</a></strong><br>
+- <strong><a href="https://docs.spring.io/spring-cloud/docs/2024.0.0/reference/html/" style="text-decoration: none;">Spring Cloud 2024.0.0</a></strong><br>
+- <strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/" style="text-decoration: none;">Spring Data JPA</a></strong><br>
+- <strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html" style="text-decoration: none;">Spring WebFlux</a></strong><br>
+- <strong><a href="https://documentation.red-gate.com/fd" style="text-decoration: none;">Flyway para migração de banco de dados</a></strong><br>
+- <strong><a href="https://www.postgresql.org/docs/current/" style="text-decoration: none;">PostgreSQL</a></strong> e <strong><a href="https://www.h2database.com/html/main.html" style="text-decoration: none;">H2 Database</a></strong><br>
+- <strong><a href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/" style="text-decoration: none;">Spring Cloud Gateway</a></strong><br>
+- <strong><a href="https://logging.apache.org/log4j/2.x/manual/" style="text-decoration: none;">Log4j</a></strong> e <strong><a href="http://www.slf4j.org/manual.html" style="text-decoration: none;">SLF4J</a></strong> para logging<br>
+- <strong><a href="https://junit.org/junit5/docs/current/user-guide/" style="text-decoration: none;">JUnit 5</a></strong> e <strong><a href="https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html" style="text-decoration: none;">Mockito</a></strong> para testes
+</p>
+
 
 ## 🚀 Como Executar o Projeto
 
