@@ -147,6 +147,36 @@ spring.cloud.gateway.routes[1].predicates[0]=Path=/service-b/**
 spring.cloud.loadbalancer.enabled=true
 ```
 
+## Estrutura de Pastas
+
+banco-digital/
+│── .github/workflows    # Configurações de CI/CD
+│── .idea/               # Configurações do IntelliJ IDEA
+│── banco-digital/
+│   │── .idea/           # Mais configurações do IntelliJ
+│   └── padrao-camadas/  # Pasta principal do projeto
+│       │── .mvn/wrapper # Arquivos do Maven Wrapper
+│       │── src/
+│       │   │── main/
+│       │   │   │── java/br/com/ewerton/padraocamadas/
+│       │   │   │   ├── config/       # Configurações gerais do projeto
+│       │   │   │   ├── controller/   # Controladores (Camada de API)
+│       │   │   │   ├── domain/       # Modelos de domínio
+│       │   │   │   ├── dto/          # Objetos de transferência de dados (DTOs)
+│       │   │   │   ├── exception/    # Tratamento de exceções
+│       │   │   │   ├── infra/        # Infraestrutura (Gateway, LoadBalancer, etc.)
+│       │   │   │   ├── repository/   # Interfaces do JPA (Spring Data)
+│       │   │   │   ├── service/      # Lógica de negócios
+│       │   │   │   ├── utils/        # Utilitários auxiliares
+│       │   │   │── resources/
+│       │   │   │   ├── db/migration/ # Scripts do Flyway para migração do banco
+│       │   │   │   ├── static/       # Arquivos estáticos (se aplicável)
+│       │   │   │   ├── templates/    # Templates do Thymeleaf (se aplicável)
+│       │   │── test/
+│       │   │   │── java/br/com/ewerton/padraocamadas/
+│       │   │   │   ├
+
+
 ## 🧪 Testes
 Os testes unitários são implementados utilizando **JUnit 5** e **Mockito**. Para rodar os testes, utilize:
 ```sh
