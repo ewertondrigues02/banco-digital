@@ -182,11 +182,13 @@ banco-digital/
 │── data/                  # Possível pasta para armazenamento de dados
 
 
+```
+
 ## 🧪 Testes
 Os testes unitários são implementados utilizando **JUnit 5** e **Mockito**. Para rodar os testes, utilize:
 ```sh
 mvn test
-```
+
 
 ## 🌟 Licença
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
