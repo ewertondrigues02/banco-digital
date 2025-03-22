@@ -48,22 +48,23 @@ Antes de iniciar, certifique-se de ter instalado:
 
 | Dependência | Versão |
 |-------------|--------|
-| **Spring Boot Starter Actuator** | 3.4.1 |
-| **Spring Boot Starter Data JPA** | 3.4.1 |
-| **Spring Boot Starter Mail** | 3.4.1 |
-| **Spring Cloud Starter Gateway** | 2024.0.0 |
-| **Spring Cloud LoadBalancer** | 2024.0.0 |
-| **Spring Boot Starter Validation** | 3.4.1 |
-| **Spring Boot Starter WebFlux** | 3.4.1 |
-| **Flyway Core** | 9.22.3 |
-| **Flyway PostgreSQL** | 9.22.3 |
-| **H2 Database** | 2.1.214 |
-| **PostgreSQL Driver** | 42.6.0 |
-| **Log4j Core** | 2.20.0 |
-| **SLF4J API** | 2.0.9 |
-| **Logback Classic** | 1.4.12 |
-| **JUnit 5** | 5.9.3 |
-| **Mockito Core** | 5.2.0 |
+| [Spring Boot Starter Actuator](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/actuator.html) | 3.4.1 |
+| [Spring Boot Starter Data JPA](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/data.html#data.sql.jpa-and-spring-data-jpa) | 3.4.1 |
+| [Spring Boot Starter Mail](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/messaging.html#messaging.email) | 3.4.1 |
+| [Spring Cloud Starter Gateway](https://docs.spring.io/spring-cloud-gateway/docs/2024.0.0/reference/html/) | 2024.0.0 |
+| [Spring Cloud LoadBalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer) | 2024.0.0 |
+| [Spring Boot Starter Validation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#validation) | 3.4.1 |
+| [Spring Boot Starter WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html) | 3.4.1 |
+| [Flyway Core](https://documentation.red-gate.com/fd) | 9.22.3 |
+| [Flyway PostgreSQL](https://documentation.red-gate.com/fd/database-specific-support/postgresql) | 9.22.3 |
+| [H2 Database](https://www.h2database.com/html/main.html) | 2.1.214 |
+| [PostgreSQL Driver](https://jdbc.postgresql.org/documentation/) | 42.6.0 |
+| [Log4j Core](https://logging.apache.org/log4j/2.x/manual/) | 2.20.0 |
+| [SLF4J API](http://www.slf4j.org/manual.html) | 2.0.9 |
+| [Logback Classic](https://logback.qos.ch/manual/configuration.html) | 1.4.12 |
+| [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) | 5.9.3 |
+| [Mockito Core](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html) | 5.2.0 |
+
 
 ## 🧪 Configurações do `application.properties`
 
