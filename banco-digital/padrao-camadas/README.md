@@ -147,8 +147,13 @@ spring.cloud.gateway.routes[1].predicates[0]=Path=/service-b/**
 spring.cloud.loadbalancer.enabled=true
 ```
 
-## Estrutura de Pastas
+# Banco Digital
 
+Este repositório contém o projeto de um banco digital desenvolvido com Java, utilizando Spring Boot e Maven. O projeto segue a arquitetura de camadas, com cada componente responsável por uma funcionalidade específica.
+
+## Estrutura de Diretórios
+
+```plaintext
 banco-digital/
 │── .github/workflows    # Configurações de CI/CD
 │── .idea/               # Configurações do IntelliJ IDEA
