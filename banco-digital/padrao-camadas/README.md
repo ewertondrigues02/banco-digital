@@ -4,16 +4,16 @@ Este é um projeto Java baseado no **Spring Boot** que segue o padrão de camada
 
 ## 📌 Tecnologias Utilizadas
 
-- **Java 21**
-- **Spring Boot 3.4.1**
-- **Spring Cloud 2024.0.0**
-- **Spring Data JPA**
-- **Spring WebFlux**
-- **Flyway para migração de banco de dados**
-- **PostgreSQL e H2 Database**
-- **Spring Cloud Gateway**
-- **Log4j e SLF4J para logging**
-- **JUnit 5 e Mockito para testes**
+- **[Java 21](https://docs.oracle.com/en/java/javase/21/)**
+- **[Spring Boot 3.4.1](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/)**
+- **[Spring Cloud 2024.0.0](https://docs.spring.io/spring-cloud/docs/2024.0.0/reference/html/)**
+- **[Spring Data JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)**
+- **[Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)**
+- **[Flyway para migração de banco de dados](https://documentation.red-gate.com/fd)**
+- **[PostgreSQL](https://www.postgresql.org/docs/current/)** e **[H2 Database](https://www.h2database.com/html/main.html)**
+- **[Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)**
+- **[Log4j](https://logging.apache.org/log4j/2.x/manual/)** e **[SLF4J](http://www.slf4j.org/manual.html) para logging**
+- **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** e **[Mockito](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html) para testes**
 
 ## 🚀 Como Executar o Projeto
 
