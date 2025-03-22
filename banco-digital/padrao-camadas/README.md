@@ -174,7 +174,10 @@ banco-digital/
 │       │   │   │   ├── templates/    # Templates do Thymeleaf (se aplicável)
 │       │   │── test/
 │       │   │   │── java/br/com/ewerton/padraocamadas/
-│       │   │   │   ├
+│       │   │   │   ├── config/       # Testes de configuração
+│       │── target/        # Arquivos compilados do projeto (build)
+│       │── pom.xml        # Arquivo de configuração do Maven
+│── data/                  # Possível pasta para armazenamento de dados
 
 
 ## 🧪 Testes
