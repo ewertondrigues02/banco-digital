@@ -186,8 +186,6 @@ banco-digital/
 
 ## 🧪 Testes
 Os testes unitários são implementados utilizando **JUnit 5** e **Mockito**. Para rodar os testes, utilize:
-```sh
-mvn test
 
 
 ## 🌟 Licença
