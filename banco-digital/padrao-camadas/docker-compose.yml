@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    container_name: banco-digital-padrao-camadas
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres_teste
+      SPRING_DATASOURCE_USERNAME: ewerton
+      SPRING_DATASOURCE_PASSWORD: 123456
+    networks:
+      - meu_rede
+
+networks:
+  meu_rede:
+    driver: bridge

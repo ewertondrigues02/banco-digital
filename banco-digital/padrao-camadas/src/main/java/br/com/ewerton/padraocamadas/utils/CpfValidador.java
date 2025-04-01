@@ -3,7 +3,7 @@ package br.com.ewerton.padraocamadas.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CpfValidador {
+public class  CpfValidador {
 
     public static boolean isValid(String cpf) {
 
