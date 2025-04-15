@@ -50,8 +50,8 @@ Este é um sistema completo de transações financeiras desenvolvido com **Java 
 ### Clonar o repositório
 
 ```bash
-git clone https://github.com/ewerton-dev/seu-projeto.git
-cd seu-projeto
+git clone https://github.com/ewertondrigues02/banco-digital.git
+cd padrao-camadas
 ```
 
 # 📬 Endpoints principais
