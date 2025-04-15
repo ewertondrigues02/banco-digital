@@ -60,17 +60,17 @@ cd seu-projeto
 
 Método	Endpoint	Descrição
 
-** GET	/pessoas_fisicas/{cpf}	Buscar pessoa por CPF
+ GET /pessoas_fisicas/{cpf}	Buscar pessoa por CPF
 
-** POST	/pessoas_fisicas/enviar	Transferência entre pessoas
+ POST	/pessoas_fisicas/enviar	Transferência entre pessoas
 
-** POST	/pessoas_fisicas/depositar	Depósito em conta
+ POST	/pessoas_fisicas/depositar	Depósito em conta
 
 # 📧 E-mail
 
 Método	Endpoint	Descrição
 
-** POST	/api/email/enviar	Envia e-mail via Mailtrap
+ POST	/api/email/enviar	Envia e-mail via Mailtrap
 
 # 📱 SMS
 
