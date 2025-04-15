@@ -7,9 +7,13 @@ public class  CpfValidador {
 
     public static boolean isValid(String cpf) {
 
+
+        if (cpf == null || cpf.isBlank()) {
+            return false;
+        }
         cpf = cpf.replace(".", "").replace("-", "");
 
-        if (cpf == null || cpf.length() != 11) {
+        if (cpf.length() != 11) {
             return false;
         }
 

@@ -4,6 +4,7 @@ import br.com.ewerton.padraocamadas.domain.PessoaFisica;
 import br.com.ewerton.padraocamadas.domain.PessoaLojista;
 import br.com.ewerton.padraocamadas.dto.PessoaFisicaDto;
 import br.com.ewerton.padraocamadas.dto.PessoaLojistaDto;
+import br.com.ewerton.padraocamadas.dto.TransacaoDto;
 import br.com.ewerton.padraocamadas.exception.PessoaNotFoundException;
 import br.com.ewerton.padraocamadas.exception.ValidationException;
 import br.com.ewerton.padraocamadas.repository.PessoaFisicaRepository;
@@ -15,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
 
 @Service
@@ -105,7 +105,15 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     public PessoaFisicaDto enviarParaPessoaFisica(PessoaFisicaDto entityRemetenteFisica, PessoaFisicaDto entityDestinoFisica, BigDecimal valor)
             throws EntityNotFoundException, ValidationException {
 
-        validarEntradasPessoaFisica(entityRemetenteFisica, entityDestinoFisica, valor);
+        // Buscar a entidade real no banco de dados pelo CPF ou ID
+        PessoaFisica remetente = pessoaFisicaRepository.findByPessoaFisicaCpf(entityRemetenteFisica.getPessoaFisicaCpfDto())
+                .orElseThrow(() -> new EntityNotFoundException("Remetente não encontrado."));
+
+        //  buscar o saldo e validar
+        PessoaFisicaDto saldo = pessoaFisicaRepository.getSaldo(pessoaFisicaDto.getPessoaFisicaSaldoDto());
+        validarSaldo(saldo, valor);
+
+        // Depois, segue o fluxo normal
         return transferirParaPessoaFisica(entityRemetenteFisica, entityDestinoFisica, valor);
     }
 
@@ -179,10 +187,17 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
 
     // Validações auxiliares
     private void validarSaldo(PessoaFisicaDto remetenteFisica, BigDecimal valor) throws ValidationException {
-        if (remetenteFisica.getPessoaFisicaSaldoDto().compareTo(valor) < 0) {
+        if (remetenteFisica.getPessoaFisicaSaldoDto() == null ||
+                remetenteFisica.getPessoaFisicaSaldoDto().compareTo(valor) < 0) {
+            throw new ValidationException("Saldo não informado para a pessoa física.");
+        }
+
+        BigDecimal saldo = remetenteFisica.getPessoaFisicaSaldoDto();
+        if (saldo.compareTo(valor) < 0) {
             throw new ValidationException("Saldo insuficiente para a transferência.");
         }
     }
+
 
     private void validarValorTransferencia(BigDecimal valor) throws ValidationException {
         if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
@@ -191,13 +206,13 @@ public class PessoaFisicaService implements GenericService<PessoaFisicaDto, Long
     }
 
     private void validarCpfRemetente(PessoaFisicaDto remetenteFisica) throws ValidationException {
-        if (!CpfValidador.isValid(remetenteFisica.getPessoaFisicaCpfDto())) {
+        if (CpfValidador.isValid(remetenteFisica.getPessoaFisicaCpfDto())) {
             throw new ValidationException("CPF do remetente inválido.");
         }
     }
 
     private void validarCpfDestinatario(PessoaFisicaDto destinoFisica) throws ValidationException {
-        if (!CpfValidador.isValid(destinoFisica.getPessoaFisicaCpfDto())) {
+        if (CpfValidador.isValid(destinoFisica.getPessoaFisicaCpfDto())) {
             throw new ValidationException("CPF do destinatário inválido.");
         }
     }
