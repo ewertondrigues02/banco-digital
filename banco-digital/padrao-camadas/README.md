@@ -14,9 +14,7 @@ Este é um sistema completo de transações financeiras desenvolvido com **Java 
 - ✅ Spring Boot 3
 - ✅ Spring Data JPA
 - ✅ Spring Validation
-- ✅ Thymeleaf (em projetos web)
-- ✅ Vue 3 (frontend desacoplado)
-- ✅ MySQL com Docker
+- ✅ Postgres com Docker
 - ✅ Flyway para versionamento do banco de dados
 - ✅ Swagger (OpenAPI)
 - ✅ Twilio API (envio de SMS)
