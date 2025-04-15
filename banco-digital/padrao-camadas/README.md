@@ -61,7 +61,9 @@ cd seu-projeto
 Método	Endpoint	Descrição
 
 ** GET	/pessoas_fisicas/{cpf}	Buscar pessoa por CPF
+
 ** POST	/pessoas_fisicas/enviar	Transferência entre pessoas
+
 ** POST	/pessoas_fisicas/depositar	Depósito em conta
 
 # 📧 E-mail
