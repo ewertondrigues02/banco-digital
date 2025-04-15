@@ -54,26 +54,26 @@ git clone https://github.com/ewerton-dev/seu-projeto.git
 cd seu-projeto
 ```
 
-#📬 Endpoints principais
+# 📬 Endpoints principais
   
-  ##📍 Pessoa Física
+  ## 📍 Pessoa Física
 
 Método	Endpoint	Descrição
 **GET	/pessoas_fisicas/{cpf}	Buscar pessoa por CPF
 **POST	/pessoas_fisicas/enviar	Transferência entre pessoas
 **POST	/pessoas_fisicas/depositar	Depósito em conta
 
-#📧 E-mail
+# 📧 E-mail
 
 Método	Endpoint	Descrição
 POST	/api/email/enviar	Envia e-mail via Mailtrap
 
-#📱 SMS
+# 📱 SMS
 
 Método	Endpoint	Descrição
 POST	/api/sms/enviar	Envia SMS via Twilio
 
-#🧪 Testes
+# 🧪 Testes
 
 ```
 ./mvnw test
@@ -103,7 +103,7 @@ Após rodar o projeto, acesse:
 http://localhost:8080/swagger-ui/index.html
 ```
 
-#📫 Contato
+# 📫 Contato
  Desenvolvido por **Ewerton Rodrigues**
 📍 Guaramirim - SC
 📧 desenvolvedor.ewerton.java@email.com
@@ -146,14 +146,4 @@ banco-digital/
 
 ```
 
-## 🧪 Testes
-Os testes unitários são implementados utilizando **JUnit 5** e **Mockito**. Para rodar os testes, utilize:
-
-
-## 🌟 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-👉 Desenvolvido por **Ewerton Rodrigues**
 
