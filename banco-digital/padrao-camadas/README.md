@@ -2,154 +2,113 @@
 
 Este é um projeto Java baseado no **Spring Boot** que segue o padrão de camadas, utilizando diversas tecnologias para desenvolvimento de aplicações robustas e escaláveis.
 
-## 📌 Tecnologias Utilizadas
+# 💻 Sistema de Transações Bancárias com Java e Spring Boot
 
-- [Java 21](https://docs.oracle.com/en/java/javase/21/)
-- [Spring Boot 3.4.1](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/)
-- [Spring Cloud 2024.0.0](https://docs.spring.io/spring-cloud/docs/2024.0.0/reference/html/)
-- [Spring Data JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
-- [Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
-- [Flyway para migração de banco de dados](https://documentation.red-gate.com/fd)
-- [PostgreSQL](https://www.postgresql.org/docs/current/) e [H2 Database](https://www.h2database.com/html/main.html)
-- [Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)
-- [Log4j](https://logging.apache.org/log4j/2.x/manual/) e [SLF4J](http://www.slf4j.org/manual.html) para logging
-- [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) e [Mockito](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html) para testes
+Este é um sistema completo de transações financeiras desenvolvido com **Java + Spring Boot**, com operações de depósito, transferência entre pessoas físicas, envio de SMS com Twilio e e-mails com SMTP, além de documentação Swagger e integração com GitHub Actions para CI/CD.
 
+---
 
+## 🔧 Tecnologias e Ferramentas
 
-## 🚀 Como Executar o Projeto
+- ✅ Java 21
+- ✅ Spring Boot 3
+- ✅ Spring Data JPA
+- ✅ Spring Validation
+- ✅ Thymeleaf (em projetos web)
+- ✅ Vue 3 (frontend desacoplado)
+- ✅ MySQL com Docker
+- ✅ Flyway para versionamento do banco de dados
+- ✅ Swagger (OpenAPI)
+- ✅ Twilio API (envio de SMS)
+- ✅ SMTP (Mailtrap)
+- ✅ JUnit 5 + Mockito (Testes Unitários)
+- ✅ GitHub Actions (CI/CD)
 
-### 📌 Pré-requisitos
-Antes de iniciar, certifique-se de ter instalado:
-- **Java 21**
-- **Maven 3.8+**
-- **Docker (opcional, para rodar o banco PostgreSQL)**
+---
 
-### 📌 Passos para Execução
-1. Clone o repositório:
-   ```sh
-   git clone https://github.com/seu-usuario/padrao-camadas.git
-   cd padrao-camadas
-   ```
-2. Compile o projeto:
-   ```sh
-   mvn clean install
-   ```
-3. Execute a aplicação:
-   ```sh
-   mvn spring-boot:run
-   ```
-4. A aplicação estará disponível em:
-   ```
-   http://localhost:8081
-   ```
+## ⚙️ Funcionalidades
 
-## 🛠️ Dependências Principais
+- 📤 Enviar e-mails personalizados com assunto e corpo
+- 📱 Enviar mensagens SMS via Twilio
+- 💰 Depositar saldo em conta de pessoa física
+- 🔄 Transferir saldo entre pessoas (via DTO)
+- 🔍 Buscar pessoa física por CPF
+- 📑 Documentação automática com Swagger UI
+- 📦 Deploy automatizado com GitHub Actions
 
-| Dependência | Versão |
-|-------------|--------|
-| [Spring Boot Starter Actuator](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/actuator.html) | 3.4.1 |
-| [Spring Boot Starter Data JPA](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/data.html#data.sql.jpa-and-spring-data-jpa) | 3.4.1 |
-| [Spring Boot Starter Mail](https://docs.spring.io/spring-boot/docs/3.4.1/reference/html/messaging.html#messaging.email) | 3.4.1 |
-| [Spring Cloud Starter Gateway](https://docs.spring.io/spring-cloud-gateway/docs/2024.0.0/reference/html/) | 2024.0.0 |
-| [Spring Cloud LoadBalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer) | 2024.0.0 |
-| [Spring Boot Starter Validation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#validation) | 3.4.1 |
-| [Spring Boot Starter WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html) | 3.4.1 |
-| [Flyway Core](https://documentation.red-gate.com/fd) | 9.22.3 |
-| [Flyway PostgreSQL](https://documentation.red-gate.com/fd/database-specific-support/postgresql) | 9.22.3 |
-| [H2 Database](https://www.h2database.com/html/main.html) | 2.1.214 |
-| [PostgreSQL Driver](https://jdbc.postgresql.org/documentation/) | 42.6.0 |
-| [Log4j Core](https://logging.apache.org/log4j/2.x/manual/) | 2.20.0 |
-| [SLF4J API](http://www.slf4j.org/manual.html) | 2.0.9 |
-| [Logback Classic](https://logback.qos.ch/manual/configuration.html) | 1.4.12 |
-| [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) | 5.9.3 |
-| [Mockito Core](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html) | 5.2.0 |
+---
 
+## 🛠️ Como rodar o projeto localmente
 
-## 🧪 Configurações do `application.properties`
+### Pré-requisitos
 
-Caso não tenha as configurações abaixo no `application.properties`, adicione:
+- Java 21
+- Maven
+- Docker + Docker Compose
+- Git
 
-```properties
-# Porta do Servidor
-server.port=8081
-spring.application.name=padrao-camadas
-debug=true
-logging.level.org.hibernate.SQL=DEBUG
-logging.level.org.hibernate.type.descriptor.sql=TRACE
-spring.devtools.restart.enabled=false
+### Clonar o repositório
 
-## Pool de conexões
-spring.datasource.hikari.connection-timeout=30000
-spring.datasource.hikari.idle-timeout=60000
-spring.datasource.hikari.max-lifetime=1800000
-
-## Flyway
-spring.flyway.url=jdbc:postgresql://postgres_teste
-spring.flyway.user=ewerton
-spring.flyway.password=123456
-spring.flyway.enabled=false
-spring.flyway.locations=classpath:db/migration
-
-# Configuração do PostgreSQL
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres_teste
-spring.datasource.driverClassName=org.postgresql.Driver
-spring.datasource.username=ewerton
-spring.datasource.password=123456
-
-# Configuração do HikariCP (pool de conexões)
-spring.datasource.hikari.auto-commit=true
-spring.datasource.hikari.transaction-isolation=TRANSACTION_READ_COMMITTED
-spring.datasource.hikari.minimum-idle=5
-spring.datasource.hikari.maximum-pool-size=10
-
-# Configuração do Hibernate
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-
-# E-mail
-spring.mail.host=sandbox.smtp.mailtrap.io
-spring.mail.port=465
-spring.mail.username=2a6aff94c403f1
-spring.mail.password=48494d7c3f090c
-spring.mail.properties.mail.smtp.ssl.enable=true
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-spring.mail.properties.mail.smtp.starttls.required=true
-spring.mail.properties.mail.smtp.ssl.trust=sandbox.smtp.mailtrap.io
-
-# Twilio
-twilio.account.sid=SEU_ACCOUNT_SID
-twilio.auth.token=SEU_AUTH_TOKEN
-twilio.phone.number=+1234567890
-
-# Swagger
-springdoc.api-docs.enabled=true
-springdoc.swagger-ui.enabled=true
-springdoc.swagger-ui.path=/swagger-ui.html
-
-# Logs
-logging.level.org.springframework=INFO
-logging.level.com.seu.projeto=DEBUG
-
-# Actuator
-management.endpoints.web.exposure.include=*
-
-# Configuração do Spring Cloud Gateway
-spring.cloud.gateway.routes[0].id=serviceA_route
-spring.cloud.gateway.routes[0].uri=lb://SERVICE-A
-spring.cloud.gateway.routes[0].predicates[0]=Path=/service-a/**
-spring.cloud.gateway.discovery.locator.enabled=true
-spring.cloud.gateway.discovery.locator.lower-case-service-id=true
-
-spring.cloud.gateway.routes[1].id=serviceB_route
-spring.cloud.gateway.routes[1].uri=lb://SERVICE-B
-spring.cloud.gateway.routes[1].predicates[0]=Path=/service-b/**
-
-# Ativando o Spring Cloud LoadBalancer
-spring.cloud.loadbalancer.enabled=true
+```bash
+git clone https://github.com/ewerton-dev/seu-projeto.git
+cd seu-projeto
 ```
 
+#📬 Endpoints principais
+  
+  ##📍 Pessoa Física
+
+Método	Endpoint	Descrição
+**GET	/pessoas_fisicas/{cpf}	Buscar pessoa por CPF
+**POST	/pessoas_fisicas/enviar	Transferência entre pessoas
+**POST	/pessoas_fisicas/depositar	Depósito em conta
+
+#📧 E-mail
+
+Método	Endpoint	Descrição
+POST	/api/email/enviar	Envia e-mail via Mailtrap
+
+#📱 SMS
+
+Método	Endpoint	Descrição
+POST	/api/sms/enviar	Envia SMS via Twilio
+
+#🧪 Testes
+
+```
+./mvnw test
+```
+
+**Testes escritos com JUnit 5 e Mockito.
+
+**Cobrem camada de serviço e integração básica.
+
+---
+
+# 🚀 CI/CD com GitHub Actions
+
+**Linter e build Maven automático a cada push
+
+**Testes executados em ambiente CI
+
+**Deploy futuro com Docker e GitHub Packages
+
+---
+
+# 📖 Documentação Swagger
+
+Após rodar o projeto, acesse:
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+#📫 Contato
+ Desenvolvido por **Ewerton Rodrigues**
+📍 Guaramirim - SC
+📧 desenvolvedor.ewerton.java@email.com
+💼 LinkedIn (https://www.linkedin.com/in/ewerton-rodrigues/)
+📁 Portfólio
 
 ## Estrutura de Diretórios
 
