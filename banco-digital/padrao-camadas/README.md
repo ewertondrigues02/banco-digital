@@ -152,7 +152,9 @@ banco-digital/
 
 ## 🎥 Demonstração
 
-![Diagrama - Conceitual](https://github.com/user-attachments/assets/73d60479-1f3a-4502-a4ff-35091763efb7)
+
+![Diagrama - Conceitual](https://github.com/user-attachments/assets/39d44647-4c95-4990-b9f6-a4da252886b1)
+
 
 
 
