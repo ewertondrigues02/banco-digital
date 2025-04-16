@@ -81,19 +81,19 @@ POST	/api/sms/enviar	Envia SMS via Twilio
 ./mvnw test
 ```
 
-**Testes escritos com JUnit 5 e Mockito.
+ Testes escritos com JUnit 5 e Mockito.
 
-**Cobrem camada de serviço e integração básica.
+ Cobrem camada de serviço e integração básica.
 
 ---
 
 # 🚀 CI/CD com GitHub Actions
 
-**Linter e build Maven automático a cada push
+Linter e build Maven automático a cada push
 
-**Testes executados em ambiente CI
+  Testes executados em ambiente CI
 
-**Deploy futuro com Docker e GitHub Packages
+  Deploy futuro com Docker e GitHub Packages
 
 ---
 
@@ -108,8 +108,8 @@ http://localhost:8080/swagger-ui/index.html
 # 📫 Contato
  Desenvolvido por **Ewerton Rodrigues**
 📍 Guaramirim - SC
-📧 desenvolvedor.ewerton.java@email.com
-💼 LinkedIn (https://www.linkedin.com/in/ewerton-rodrigues/)
+📧 [!Email](desenvolvedor.ewerton.java@email.com)
+💼 [!LinkedIn][(https://www.linkedin.com/in/ewerton-rodrigues/)
 📁 Portfólio
 
 ## Estrutura de Diretórios
