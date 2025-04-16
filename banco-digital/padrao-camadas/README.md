@@ -108,8 +108,8 @@ http://localhost:8080/swagger-ui/index.html
 # 📫 Contato
  Desenvolvido por **Ewerton Rodrigues**
 📍 Guaramirim - SC
-📧 [!Email](desenvolvedor.ewerton.java@email.com)
-💼 [!LinkedIn][(https://www.linkedin.com/in/ewerton-rodrigues/)
+📧 [Email](desenvolvedor.ewerton.java@email.com)
+💼 [LinkedIn](https://www.linkedin.com/in/ewerton-rodrigues/)
 📁 Portfólio
 
 ## Estrutura de Diretórios
