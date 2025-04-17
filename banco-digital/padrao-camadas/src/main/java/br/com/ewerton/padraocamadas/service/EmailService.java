@@ -16,7 +16,7 @@ public class EmailService {
         mensagem.setTo(para);
         mensagem.setSubject(assunto);
         mensagem.setText(corpo);
-        mensagem.setFrom("no-reply@seudominio.com"); // Pode ser qualquer endereço (não precisa ser real no Mailtrap)
+        mensagem.setFrom("no-reply@seudominio.com");
 
         mailSender.send(mensagem);
     }
