@@ -245,10 +245,10 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
-## Diagrama da UML
+## Diagrama de Fluxo de Dados
 
 
-[Padrão Camadas.pdf](https://github.com/user-attachments/files/18503102/Diagrama.do.Banco.Digital.-.3Core.drawio.pdf) 
+![Diagrama - Conceitual](https://github.com/user-attachments/assets/39d44647-4c95-4990-b9f6-a4da252886b1)
 
 
  
